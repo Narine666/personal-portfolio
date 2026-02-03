@@ -1,26 +1,32 @@
 "use client";
 import Link from 'next/link';
-import { useLanguage } from '@/context/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function ProjectsPage() {
-  const { t } = useLanguage();
+  // Օգտագործում ենք 'projects' բաժինը JSON-ից
+  const t = useTranslations('projects');
+  const locale = useLocale();
+  
+  // Վերցնում ենք նախագծերի ցուցակը որպես զանգված
+  const projectsList = t.raw('list');
+
   const bgImage = "https://i.pinimg.com/736x/f3/43/31/f34331b705e6ddd0115d31e10d5f68ef.jpg";
 
   return (
     <div className="min-h-screen bg-[#f5f5f5] text-black p-8 font-sans overflow-x-hidden">
       <header className="mb-20 border-b border-black pb-4 flex justify-between items-end">
         <h1 className="text-3xl md:text-5xl font-light italic tracking-tighter uppercase">
-          {t.projects.title}
+          {t('title')}
         </h1>
         <span className="text-[10px] tracking-[0.3em] font-mono opacity-50 uppercase">
-          {t.projects.units}: {t.projects.list.length}
+          {t('units')}: {projectsList.length}
         </span>
       </header>
 
       <div className="space-y-40">
-        {t.projects.list.map((project: any) => (
+        {projectsList.map((project: any) => (
           <section key={project.id} className="relative group min-h-[450px] flex flex-col justify-center border-b border-black/5 pb-20">
-            {/* Background Image (նույնն է մնում) */}
+            {/* Background Image */}
             <div className="absolute inset-0 z-0 opacity-10 group-hover:opacity-25 transition-opacity duration-700 pointer-events-none">
               <img src={bgImage} className="w-full h-full object-cover grayscale" alt="" />
             </div>
@@ -49,8 +55,9 @@ export default function ProjectsPage() {
                 </div>
 
                 <div className="md:col-span-2 flex justify-end items-center pt-6">
-                  <Link href={`/projects/${project.id}`} className="text-[10px] border border-black px-8 py-4 hover:bg-black hover:text-white transition-all uppercase font-bold bg-white/40">
-                    {t.projects.details}
+                  {/* Համոզվիր, որ Link-ը ներառում է լեզվի կոդը */}
+                  <Link href={`/${locale}/projects/${project.id}`} className="text-[10px] border border-black px-8 py-4 hover:bg-black hover:text-white transition-all uppercase font-bold bg-white/40">
+                    {t('details')}
                   </Link>
                 </div>
               </div>
