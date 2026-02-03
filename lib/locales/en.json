@@ -1,0 +1,40 @@
+{
+  "nav": { "projects": "Projects", "blog": "Blog", "contact": "Contact" },
+  "home": {
+    "hero": "DEVELOPER DESIGNER",
+    "quote": "Monochrome design is not the absence of color, but the presence of essence.",
+    "role": "Frontend Developer & Visual Thinker",
+    "button": "Explore Portfolio"
+  },
+  "blog": {
+    "archive": "Archive",
+    "readMore": "Read More",
+    "posts": [
+      { 
+        "slug": "why-nextjs", 
+        "title": "Why I Love Next.js", 
+        "desc": "My experience learning Next.js",
+        "content": "Next.js provides the best developer experience with its file-based routing and rendering capabilities."
+      }
+    ]
+  },
+  "projects": {
+    "title": "Selected_Works.pdf",
+    "units": "Total_Units",
+    "details": "Details_",
+    "list": [
+      { "id": "01", "title": "E-LEARNING PLATFORM", "cat": "ARCHIVE / WEB DEVELOPMENT", "desc": "a digital space for education focusing on minimalist interaction." }
+    ]
+  },
+  "contact": {
+    "header": "Secure_Messaging.v1",
+    "success": "Success_Sent",
+    "successDesc": "Your data has been processed.",
+    "back": "Return_to_Form",
+    "name": "User_Name",
+    "email": "Email_Address",
+    "message": "Message_Payload",
+    "send": "Execute_Submit_",
+    "required": "Required_"
+  }
+}
