@@ -1,22 +1,23 @@
+"use client";
 import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function HomePage() {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-[#f5f5f5] text-black font-sans selection:bg-black selection:text-white overflow-x-hidden">
       
-      {/* --- Background Lines (SVG-ների հավաքածու) --- */}
+      {/* --- Background Lines (SVG-ներ) --- */}
       <div className="fixed inset-0 pointer-events-none z-0 opacity-20">
-        {/* Վերևի ձախ անկյուն (այն, որն արդեն ունեինք) */}
         <svg className="absolute -top-10 -left-10 w-[400px] h-[400px]" viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="0.2">
           <path d="M10,50 Q40,10 90,50 T10,90" />
         </svg>
 
-        {/* Ներքևի աջ անկյուն (Նոր՝ ավելի խճճված գիծ) */}
         <svg className="absolute -bottom-20 -right-20 w-[600px] h-[600px]" viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="0.15">
           <path d="M0,100 C20,80 50,110 70,70 S100,20 100,0 M100,100 C80,80 50,90 30,60 S0,20 0,0" />
         </svg>
 
-        {/* Մեջտեղի հատվածում (Նուրբ շրջանակաձև խզբզոց) */}
         <svg className="absolute top-1/2 left-1/4 w-[500px] h-[500px] -translate-y-1/2" viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="0.1">
           <path d="M30,50 A20,20 0 1,0 70,50 A20,20 0 1,0 30,50 M20,50 A30,30 0 1,0 80,50 A30,30 0 1,0 20,50" className="opacity-50" />
         </svg>
@@ -24,18 +25,13 @@ export default function HomePage() {
 
       {/* --- Բովանդակությունը (Content) --- */}
       <div className="relative z-10">
-        <nav className="p-8 flex justify-between items-center border-b border-black/10">
-          <span className="font-bold tracking-tighter text-xl underline decoration-2 italic">NARINE.</span>
-          <div className="space-x-8 text-sm uppercase tracking-widest font-medium">
-            <Link href="/projects" className="hover:line-through">Projects</Link>
-            <Link href="/blog" className="hover:line-through">Blog</Link>
-            <Link href="/contact" className="hover:line-through">Contact</Link>
-          </div>
-        </nav>
+        {/* ՈՒՇԱԴՐՈՒԹՅՈՒՆ. <nav> հատվածը հեռացված է, այն արդեն Layout-ում է */}
 
         <main className="px-8 pt-20 pb-10">
           <div className="max-w-5xl mx-auto">
-            <p className="text-xs uppercase tracking-[0.3em] mb-4 text-gray-500">Editorial Issue / 2026</p>
+            <p className="text-xs uppercase tracking-[0.3em] mb-4 text-gray-500">
+              Editorial Issue / 2026
+            </p>
             
             <h1 className="text-7xl md:text-[11rem] font-bold tracking-tighter leading-[0.8] mb-16">
               DEVELOPER <br />
@@ -45,14 +41,17 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-end">
               <div className="space-y-6">
                 <p className="text-xl leading-relaxed max-w-md border-l-2 border-black pl-6 italic">
+                  {/* Այստեղ կարող ես ավելացնել t.home.quote dictionaries.ts-ում */}
                   «Մոնոքրոմիկ դիզայնը ոչ թե գույների բացակայությունն է, այլ էության ներկայությունը։»
                 </p>
-                <p className="text-sm text-gray-400 uppercase tracking-widest pl-6">Frontend Developer & Visual Thinker</p>
+                <p className="text-sm text-gray-400 uppercase tracking-widest pl-6">
+                  Frontend Developer & Visual Thinker
+                </p>
               </div>
               
               <Link href="/projects" className="group relative inline-block self-start">
                 <div className="bg-black text-white px-12 py-6 text-lg uppercase tracking-widest transition-transform group-hover:-translate-y-2 group-hover:-translate-x-2">
-                  Explore Portfolio
+                  {t.nav.projects} {/* Օգտագործում ենք թարգմանությունը */}
                 </div>
                 <div className="absolute inset-0 border border-black -z-10 translate-y-1 translate-x-1"></div>
               </Link>
